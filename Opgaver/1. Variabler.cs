@@ -35,7 +35,7 @@
             Console.WriteLine("Udskriv variablen til konsollen.");
             // Lav opgaven herunder!
             double value = 5.25;  // 5.1/4
-            Console.WriteLine(value); 
+            Console.WriteLine(value);
 
 
         }
