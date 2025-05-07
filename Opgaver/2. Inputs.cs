@@ -110,7 +110,6 @@ namespace Opgaver
             float height = float.Parse(Console.ReadLine());
 
             float bmi = (weight / (height * height));
-
             Console.WriteLine($"Your BMI is: {bmi}");
 
         }
