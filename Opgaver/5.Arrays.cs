@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Opgaver
@@ -93,9 +94,10 @@ namespace Opgaver
             {
                 Console.WriteLine("Enter name:");
                 names.Add(Console.ReadLine());
+
             }
 
-            Console.WriteLine("Here is the list");
+            Console.WriteLine("Here is the list:");
             Console.WriteLine(string.Join(", ", names));
         }
 
@@ -104,6 +106,16 @@ namespace Opgaver
             Console.WriteLine("Opgave 2 (List):");
             Console.WriteLine("Lav et program hvor brugeren kan blive ved med at indtaste navne indtil de skriver 'stop'. Udskriv alle navnene til sidst.");
             // Lav opgaven herunder!
+            List<string> names = new List<string>();
+            Console.WriteLine("Enter list, finish with 'stop'");
+
+            string input;
+            while ((input = Console.ReadLine()) != "stop")
+            {
+                names.Add(input);
+            }
+            Console.WriteLine("Here is the list:");
+            Console.WriteLine(string.Join(", ", names));
         }
 
         public static void List3()
@@ -111,6 +123,22 @@ namespace Opgaver
             Console.WriteLine("Opgave 3 (List):");
             Console.WriteLine("Lav et program hvor brugeren indtaster 5 tal i en liste og programmet udskriver gennemsnittet.");
             // Lav opgaven herunder!
+            List<int> values = new List<int>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                values.Add(int.Parse(Console.ReadLine()));
+            }
+
+            //double average = values.Average();
+
+            double sum = 0;
+            foreach (int value in values)
+            {
+                sum += value;
+            }
+            sum = sum / values.Count;
+            Console.WriteLine($"Gennemsnit: {sum}");
         }
 
         public static void List4()
@@ -118,6 +146,23 @@ namespace Opgaver
             Console.WriteLine("Opgave 4 (List):");
             Console.WriteLine("Lav et program hvor brugeren indtaster navne på ting de skal købe, og kan fjerne ting fra listen igen. Udskriv listen til sidst.");
             // Lav opgaven herunder!
+            List<string> list = new List<string>();
+            Console.WriteLine("Enter list, finish with stop:");
+            string input;
+            while ((input = Console.ReadLine()) != "stop")
+            {
+                list.Add(input);
+            }
+            Console.WriteLine("Here is the list:");
+            Console.WriteLine(string.Join(", ", list));
+
+            Console.WriteLine("Enter value to delete");
+            string choice = Console.ReadLine();
+            list.Remove(choice);
+
+            Console.WriteLine("New list:");
+            Console.WriteLine(string.Join(", ", list));
+
         }
 
         public static void List5()
@@ -125,7 +170,27 @@ namespace Opgaver
             Console.WriteLine("Opgave 5 (List):");
             Console.WriteLine("Lav et program hvor brugeren indtaster navne på sine venner i en liste og programmet udskriver hvor mange navne der starter med 'A'.");
             // Lav opgaven herunder!
+            List<string> names = new List<string>();
+            string input;
+            Console.WriteLine("Enter list, finish with stop:");
+            while ((input = Console.ReadLine()) != "stop")
+            {
+                names.Add(input);
+            }
+            Console.WriteLine("Here is the list:");
+            Console.WriteLine(string.Join(", ", names));
+
+            int counter = 0;
+            foreach (string name in names)
+            {
+                if (name[0] == 'A')
+                    counter++;
+
+            }
+            Console.WriteLine("Names with first 'A': ");
+            Console.WriteLine(counter);
         }
+
 
         public static void Dict1()
         {
@@ -133,6 +198,27 @@ namespace Opgaver
             Console.WriteLine("Lav et program hvor du gemmer navne og alder på 3 personer i en dictionary og udskriver dem alle.");
             // Lav opgaven herunder!
             // Husk syntaxen for Dictionary<type, type> navn = new Dictionary<type, type>();
+            Dictionary<string, int> dictionary = new Dictionary<string, int>();
+            string key;
+            int value;
+            Console.WriteLine("Enter key-value 3 times:");
+
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine("Enter key:");
+                key = Console.ReadLine();
+
+                Console.WriteLine("Enter value:");
+                value = int.Parse(Console.ReadLine());
+
+                dictionary[key] = value;
+            }
+
+            Console.WriteLine("Dictionary is:");
+            foreach (var item in dictionary)
+            {
+                Console.WriteLine($"{item.Key}: {item.Value}");
+            }
         }
 
         public static void Dict2()
@@ -140,6 +226,28 @@ namespace Opgaver
             Console.WriteLine("Opgave 2 (Dictionary):");
             Console.WriteLine("Lav et program hvor brugeren kan indtaste et navn og få alderen på personen ud fra dictionaryen fra før.");
             // Lav opgaven herunder!
+            Dictionary<string, int> dictionary = new Dictionary<string, int>()
+            {
+                { "Andrii", 37 },
+                { "Kateryna", 32 },
+                { "Alice", 5 },
+                { "Astrid", 1 }
+            };
+
+            foreach (var item in dictionary)
+            {
+                Console.WriteLine($"{item.Key}: {item.Value}");
+            }
+
+            Console.WriteLine("Enter name and get age:");
+            string name = Console.ReadLine();
+
+            foreach (var item in dictionary)
+            {
+                if (item.Key == name)
+                    Console.WriteLine($"Age is: {item.Value}");
+            }
+
         }
         public static void MiniProjektKlasseliste()
         {
@@ -148,6 +256,17 @@ namespace Opgaver
             Console.WriteLine("Lav et program, hvor brugeren indtaster navnene på alle elever i en klasse (fx 5 navne).");
             Console.WriteLine("Gem navnene i en liste og udskriv hele klasselisten i konsollen.");
             // Lav opgaven herunder!
+            List<string> names = new List<string>();
+
+            Console.WriteLine("Enter list, finish with 'stop'");
+
+            string input;
+            while ((input = Console.ReadLine()) != "stop")
+            {
+                names.Add(input);
+            }
+            Console.WriteLine("Here is the list:");
+            Console.WriteLine(string.Join(", ", names));
         }
 
         public static void MiniProjektIndkøbsliste()
@@ -157,7 +276,17 @@ namespace Opgaver
             Console.WriteLine("Lav et program, hvor brugeren indtaster navnet på tre ting, de skal købe i supermarkedet.");
             Console.WriteLine("Gem tingene i en liste og udskriv en indkøbsliste til brugeren.");
             // Lav opgaven herunder!
-        }
 
+            List<string> list = new List<string>();
+
+            for (int i = 1; i <= 3; i++)
+            {
+                Console.WriteLine($"Enter goods number {i}:");
+                list.Add(Console.ReadLine());
+            }
+
+            Console.WriteLine("Here is the list of goods:");
+            Console.WriteLine(string.Join(", ", list));
+        }
     }
 }
