@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace Opgaver
 {
@@ -33,13 +34,32 @@ namespace Opgaver
             Console.WriteLine("Lav et program som gemmer 5 fornavne som brugeren indtaster i et array.");
             // Lav opgaven herunder!
             string[] navne = new string[5];
-        }
 
+            for (int i = 0; i < navne.Length; i++)
+            {
+                Console.WriteLine("Enter name:");
+                navne[i] = Console.ReadLine();
+            }
+
+            Console.WriteLine("Here is list:");
+            for (int i = 0; i < navne.Length; i++)
+            {
+                Console.WriteLine(navne[i]);
+            }
+        }
         public static void Array2()
         {
             Console.WriteLine("Opgave 2 (Array):");
             Console.WriteLine("Lav et program som gemmer 5 tal i et array og udskriver det største tal.");
             // Lav opgaven herunder!
+            int[] values = new int[5];
+
+            for (int i = 0; i < values.Length; i++)
+            {
+                Console.WriteLine("Enter value:");
+                values[i] = int.Parse(Console.ReadLine());
+            }
+            Console.WriteLine($"The biggest is: {values.Max()}");
         }
 
         public static void Array3()
@@ -47,6 +67,19 @@ namespace Opgaver
             Console.WriteLine("Opgave 3 (Array):");
             Console.WriteLine("Lav et program som gemmer 5 bynavne i et array og udskriver dem alle i omvendt rækkefølge.");
             // Lav opgaven herunder!
+            string[] city_list = new string[5];
+            for (int i = 0; i < city_list.Length; i++)
+            {
+                Console.WriteLine("Enter name:");
+                city_list[i] = Console.ReadLine();
+            }
+
+            Console.WriteLine("Here is list:");
+            for (int i = city_list.Length - 1; i >= 0; i--)
+            {
+                Console.WriteLine(city_list[i]);
+            }
+
         }
 
         public static void List1()
@@ -54,7 +87,16 @@ namespace Opgaver
             Console.WriteLine("Opgave 1 (List):");
             Console.WriteLine("Lav et program som gemmer 5 fornavne som brugeren indtaster i en liste.");
             // Lav opgaven herunder!
-            List<string> navne = new List<string>();
+            List<string> names = new List<string>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("Enter name:");
+                names.Add(Console.ReadLine());
+            }
+
+            Console.WriteLine("Here is the list");
+            Console.WriteLine(string.Join(", ", names));
         }
 
         public static void List2()
