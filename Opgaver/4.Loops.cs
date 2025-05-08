@@ -20,6 +20,8 @@ namespace Opgaver
             Loop9();
             Loop10();
             BankeBøf();
+            MiniProjektLommeregner();
+
         }
 
         public static void Loop1()
@@ -132,6 +134,13 @@ namespace Opgaver
             Console.WriteLine("Opgave 9:");
             Console.WriteLine("Bed brugeren om at indtaste 5 tal (ét ad gangen). Brug et loop til at lægge dem sammen og udskriv summen til sidst.");
             // Lav opgaven herunder!
+            Console.WriteLine("Write 5 values, separate with enter:");
+            int sum = 0;
+            for (int i = 1; i <= 5; i++)
+            {
+                sum += int.Parse(Console.ReadLine());
+            }
+            Console.WriteLine($"Result is: {sum}");
         }
 
         public static void Loop10()
@@ -139,6 +148,15 @@ namespace Opgaver
             Console.WriteLine("Opgave 10:");
             Console.WriteLine("Lav et program, hvor brugeren skal gætte et hemmeligt tal mellem 1 og 10. Brug et loop, så brugeren kan gætte indtil det rigtige tal er fundet.");
             // Lav opgaven herunder!
+            Random rnd = new Random();
+            int secretNumber = rnd.Next(1, 10); // от 1 до 10 включительно
+            int value;
+            Console.WriteLine("Enter value:");
+            while ((value = int.Parse(Console.ReadLine())) != secretNumber)
+            {
+                Console.WriteLine("Wrong!! Try again");
+            }
+            Console.WriteLine("Right! Good job");
         }
 
         public static void BankeBøf()
@@ -147,6 +165,18 @@ namespace Opgaver
             Udskriv 'Banke' hvis tallet er deleligt med 3, 'Bøf' hvis tallet er deleligt med 5 
             og 'BankeBøf' hvis tallet er deleligt med både 3 og 5.");
             // Lav opgaven herunder!
+            for (int i = 1; i <= 30; i++)
+            {
+                Console.Write($"{i} ");
+                if (i % 3 == 0 && i % 5 == 0)
+                    Console.WriteLine("Bankebøf");
+                else if (i % 3 == 0)
+                    Console.WriteLine("Banke");
+                else if (i % 5 == 0)
+                    Console.WriteLine("Bøf");
+                else Console.WriteLine();
+            }
+
         }
         public static void MiniProjektLommeregner()
         {
@@ -156,6 +186,48 @@ namespace Opgaver
             Console.WriteLine("Programmet skal udregne og udskrive resultatet.");
             Console.WriteLine("Tip: Brug if/else eller switch til at vælge regnearten.");
             // Lav opgaven herunder!
+            float result;
+
+            while (true)
+            {
+                Console.Write("Enter first number: ");
+                int first_value = int.Parse(Console.ReadLine());
+
+                Console.Write("Enter second number: ");
+                int second_value = int.Parse(Console.ReadLine());
+
+                Console.Write("Enter operation (+, -, *, / or 'exit'): ");
+                string operation = Console.ReadLine();
+
+                if (operation == "exit")
+                    break;
+
+                switch (operation)
+                {
+                    case "+":
+                        result = first_value + second_value;
+                        Console.WriteLine($"Result: {result}");
+                        break;
+
+                    case "-":
+                        result = first_value - second_value;
+                        Console.WriteLine($"Result: {result}");
+                        break;
+
+                    case "*":
+                        result = first_value * second_value;
+                        Console.WriteLine($"Result: {result}");
+                        break;
+                    case "/":
+                        result = (float)first_value / second_value;
+                        Console.WriteLine($"Result: {result}");
+                        break;
+
+                    default:
+                        Console.WriteLine("Something is wrong");
+                        break;
+                }
+            }
         }
     }
 }
