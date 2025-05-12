@@ -189,7 +189,7 @@ namespace Opgaver
             else
             {
                 Console.WriteLine("Du er svært overvægtig.");
-            }
+            }   
         }
     }
 }
