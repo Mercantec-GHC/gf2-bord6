@@ -1,0 +1,44 @@
+﻿@page "/"
+
+<PageTitle>
+	
+	Home  
+	
+</PageTitle>
+
+<style>
+    body {
+        background-image: url('https://imgs.search.brave.com/wXDFhn4L209b5nM5D2RErBG2OEMKX-nmmSfGJbfvwW0/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJzLmNvbS9p/bWFnZXMvZmVhdHVy/ZWQvcHJvZ3JhbW1p/bmctYmFja2dyb3Vu/ZC1sbmJlYmh6NjIw/ejJwY3k4LmpwZw');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+	h1 {
+		color: green;
+		text-align: center;
+		margin-top: 20px;
+		font-size: 3em;
+	}
+		
+	.home-title
+	{
+		color: forestgreen;
+	}
+</style>
+
+<h2 class="home-title">Home</h2>
+
+<h1>Welcome to the home page.</h1>
+
+
+<button class="btn btn-primary" @onclick="LinkToOtherPage"> Find your groups </button>
+
+@code {
+	private void LinkToOtherPage()
+	{
+		NavigationManager.NavigateTo("/counter");
+	}
+	[Inject]
+	private NavigationManager NavigationManager { get; set; }
+}

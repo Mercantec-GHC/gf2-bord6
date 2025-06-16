@@ -1,0 +1,59 @@
+﻿@page "/"
+@page "/home"
+@inject IJSRuntime JS
+
+<h2>Quick Label Maker</h2>
+
+<div style="max-width:400px;margin:auto;padding:16px;border-radius:8px;background:#f9f9ff;box-shadow:0 2px 8px #eee;">
+    <div style="margin-bottom:12px;">
+        <label>Weight: <input @bind="label.Weight" style="width:100%;margin-bottom:8px;" /></label>
+        <label>Size: <input @bind="label.Size" style="width:100%;margin-bottom:8px;" /></label>
+        <label>Color: <input @bind="label.Color" style="width:100%;margin-bottom:8px;" /></label>
+        <label>Variety: <input @bind="label.Variety" style="width:100%;" /></label>
+    </div>
+
+    <button @onclick="PrintLabel" style="background:#7c3aed;color:white;padding:8px 20px;border:none;border-radius:4px;cursor:pointer;">
+        Print Label
+    </button>
+
+
+
+    <div id="printArea" style="margin-top:20px;padding:12px;border:1px dashed #bbb;background:#fff;border-radius:6px;">
+        <h3 style="color:#7c3aed;">Printer Label</h3>
+        <p><strong>Weight:</strong> @label.Weight</p>
+        <p><strong>Size:</strong> @label.Size</p>
+        <p><strong>Color:</strong> @label.Color</p>
+        <p><strong>Variety:</strong> @label.Variety</p>
+    </div>
+</div>
+
+<script src="js/printHelper.js"></script>
+
+@code {
+    private ADPrinterInfo label = new ADPrinterInfo();
+
+    // Prints only the label area
+
+    // Teleporthq used for styling and printing
+    // This method uses JavaScript to print the content of the "printArea" div
+    private async Task PrintLabel()
+    {
+        try
+        {
+            await JS.InvokeVoidAsync("printHelper.printContent", "printArea");
+        }
+        catch (JSException ex)
+        {
+            Console.WriteLine($"Print error: {ex.Message}");
+            // Show error to user
+        }
+    }
+
+    public class ADPrinterInfo
+    {
+        public string Weight { get; set; } = string.Empty;
+        public string Size { get; set; } = string.Empty;
+        public string Color { get; set; } = string.Empty;
+        public string Variety { get; set; } = string.Empty;
+    }
+}

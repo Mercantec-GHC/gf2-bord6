@@ -1,0 +1,55 @@
+﻿@using AD_Konsol
+@inject ADService AdService
+@page "/counter"
+
+<PageTitle>Counter</PageTitle>
+
+<div class="container py-5">
+    <h1 class="display-4 mb-4 text-primary">Counter Demo</h1>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <p class="h5 mb-3">Current count: <span class="badge bg-secondary">@currentCount</span></p>
+            <button class="btn btn-success" @onclick="IncrementCount">
+                <i class="bi bi-plus-circle me-2"></i>Click me
+            </button>
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <h3 class="mb-3 text-info">Groups</h3>
+        @if (groups.Count == 0)
+        {
+            <div class="alert alert-warning" role="alert">
+                No groups loaded yet. Click the button to load them.
+            </div>
+        }
+        else
+        {
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                @foreach (var group in groups)
+                {
+                    <div class="col">
+                        <div class="card h-100 border-info">
+                            <div class="card-body">
+                                <h5 class="card-title">@group.Name</h5>
+                                <p class="card-text">@group.Description</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    List<ADGroup> groups = new List<ADGroup>();
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+        groups = AdService.GetAllGroups();
+    }
+}
