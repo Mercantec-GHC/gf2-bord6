@@ -218,11 +218,12 @@ namespace Opgaver
                         result = first_value * second_value;
                         Console.WriteLine($"Result: {result}");
                         break;
+
                     case "/":
                         result = (float)first_value / second_value;
                         Console.WriteLine($"Result: {result}");
                         break;
-
+                        
                     default:
                         Console.WriteLine("Something is wrong");
                         break;
